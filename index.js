@@ -39,7 +39,7 @@ const pool = mysql.createPool({
 });
 const db = pool.promise();
 
-app.get("/api/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("API Working!");
 });
 
