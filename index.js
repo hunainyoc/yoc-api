@@ -43,6 +43,16 @@ app.get("/", (req, res) => {
     res.send("API Working!");
 });
 
+app.get("/db-status", async (req, res) => {
+    try {
+        await db.query('SELECT 1');
+        res.json({ status: "working" });
+    } catch (error) {
+        console.error("Database connection error:", error);
+        res.status(500).json({ status: "not working" });
+    }
+});
+
 app.post("/visitors/log", async (req, res) => {
     const payload = req.body;
 
